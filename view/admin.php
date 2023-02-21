@@ -25,8 +25,8 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
         <section class="menu">
             <div class="sidebar">
                 <div class="profile">
-                    <img src="../images/photo.jpg" alt="" width="10px ">
                     <?php while($row=mysqli_fetch_assoc($user)){?>
+                        <img src="data:image/jpg;base64,<?php echo base64_encode($row["Foto"])?>" alt="">
                         <b><?php echo $row["Nombre"]?></b>
                         <p><?php echo $row["Rol"]?></p>
                     <?php } ?>
@@ -48,7 +48,15 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
             <div class="navbar">
                 <img src="../images/logo.png" alt="">
             </div>
-            <div class="data"></div>
+            <div class="data">
+                <form action="../model/create.php" method="post" enctype="multipart/form-data">
+                    <input type="text" name="name" placeholder="Nombre"><br>
+                    <input type="password" name="pass" placeholder="Contraseña"><br>
+                    <input type="text" name="rol" placeholder="Rol"><br>
+                    <input type="file" name="image"><br>
+                    <button type="submit">Enviar</button>
+                </form>
+            </div>
         </section>
     </main>
 </body>
