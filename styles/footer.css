@@ -12,7 +12,23 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 /*--------------------------------------------------<|"RESPONSIVE"|>--------------------------------------------------*/
+@media (max-width:500px) {
+    .footer{
+        font-size: 10px;
+    }
+}
+@media (max-width:450px) {
+    .footer{
+        font-size: 10px;
+    }
+}
+@media (max-width:400px) {
+    .footer{
+        font-size: 10px;
+    }
+}
 @media (max-width:350px) {
     .footer{
+        font-size: 10px;
     }
 }

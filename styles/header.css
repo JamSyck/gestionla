@@ -10,11 +10,51 @@
     margin-left: 3em;
 }
 /*--------------------------------------------------<|"RESPONSIVE"|>--------------------------------------------------*/
-@media (max-width:350px) {
-    main{
-        width: 100vh;
-    }
+@media (max-width:500px) {
     .header{
-        width: 100%;
+        height: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .header img{
+        margin-left: 0;
+        height: 32px;
+    }
+}
+@media (max-width:450px) {
+    .header{
+        height: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .header img{
+        margin-left: 0;
+        height: 32px;
+    }
+}
+@media (max-width:400px) {
+    .header{
+        height: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .header img{
+        margin-left: 0;
+        height: 32px;
+    }
+}
+@media (max-width:350px) {
+    .header{
+        height: 15px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .header img{
+        margin-left: 0;
+        height: 32px;
     }
 }

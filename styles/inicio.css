@@ -16,8 +16,8 @@ body{
     left: 50%;
     transform: translate(-50%,-50%);
     position: absolute;
-}
-.container-form{
+    border-radius: 10px;
+    overflow: hidden;
     width: 800px;
     height: 450px;
     display: flex;
@@ -37,7 +37,6 @@ body{
     padding: 2rem;
     background-color: white;
 }
-/*-----FORM-----*/
 form{
     text-align: center;
 }
@@ -63,7 +62,7 @@ form input:focus{
     transition-timing-function: ease;
 }
 form button{
-    width: 85%;
+    width: 82%;
     border-radius: 50px;
     height: 35px;
     border: none;
@@ -81,7 +80,8 @@ form button:hover{
     transition-timing-function: ease-in-out;
 }
 form hr{
-    margin: 1rem 0 2rem 0;
+    margin: 1rem auto;
+    width: 80%;
 }
 form a{
     text-decoration: none;
@@ -100,21 +100,95 @@ form a:hover{
     visibility: hidden;
 }
 /*--------------------------------------------------<|"RESPONSIVE"|>--------------------------------------------------*/
-@media (max-width:350px) {
+@media (max-width:500px) {
     .container{
-        top: 55%;
-        left: 55%;
-        transform: translate(-50%,-50%);
-        position: absolute;
+        width: 280px;
+        height: 400px;
     }
     .content-left{
         display: none;
     }
-    .container-form{
-        width: 325px;
-        height: 450px;
+    .content-right{
+        width: 100%;
+        padding: 1rem;
+    }
+    form h2{
+        margin-bottom: 1rem;
+    }
+    form hr{
+        width: 70%;
+        margin: 1rem auto;
+    }
+    form button{
+        width: 73%;
+    }
+}
+@media (max-width:450px) {
+    .container{
+        width: 280px;
+        height: 400px;
+    }
+    .content-left{
+        display: none;
     }
     .content-right{
         width: 100%;
+        padding: 1rem;
+    }
+    form h2{
+        margin-bottom: 1rem;
+    }
+    form hr{
+        width: 70%;
+        margin: 1rem auto;
+    }
+    form button{
+        width: 73%;
+    }
+}
+@media (max-width:400px) {
+    .container{
+        width: 280px;
+        height: 400px;
+    }
+    .content-left{
+        display: none;
+    }
+    .content-right{
+        width: 100%;
+        padding: 1rem;
+    }
+    form h2{
+        margin-bottom: 1rem;
+    }
+    form hr{
+        width: 70%;
+        margin: 1rem auto;
+    }
+    form button{
+        width: 73%;
+    }
+}
+@media (max-width:350px) {
+    .container{
+        width: 280px;
+        height: 400px;
+    }
+    .content-left{
+        display: none;
+    }
+    .content-right{
+        width: 100%;
+        padding: 1rem;
+    }
+    form h2{
+        margin-bottom: 1rem;
+    }
+    form hr{
+        width: 70%;
+        margin: 1rem auto;
+    }
+    form button{
+        width: 73%;
     }
 }

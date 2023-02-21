@@ -1,0 +1,229 @@
+@font-face {
+    font-family: 'Catamaran';
+    src: url(../fonts/Catamaran-VariableFont_wght.ttf);
+}
+body{
+    margin: 0;
+    padding: 0;
+}
+main{
+    display: flex;
+    width: 100vh;
+}
+/*--------------------------------------------------SIDEBAR--------------------------------------------------*/
+.menu{
+    background-color: rgb(87, 87, 87);
+    width: 180px;
+    height: 100vh;
+    z-index: 1;
+    font-family: 'Catamaran';
+}
+.sidebar img{
+    display: flex;
+    width: 100px;
+    margin: 1em auto;
+    border-radius: 50%;
+}
+.profile{
+    text-align: center;
+    color: white;
+}
+.profile b, p{
+    margin: 0;
+}
+/*---------PROCESOS---------*/
+.processes{
+    font-size: 16px;
+    margin-bottom: 1rem;
+}
+.processes b{
+    margin-bottom: 5px;
+    margin-left: 1rem;
+}
+.processes ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    color: white;
+}
+.processes ul li{
+    margin: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+.processes ul li:hover{
+    background-color: rgb(121, 121, 255);
+    transition: .1s;
+}
+.processes ul li:hover i{
+    transition: .1s;
+    transform: translateX(50%);
+    transition-timing-function: ease-in-out;
+}
+.processes ul li:hover p{
+    transition: .1s;
+    transform: translateX(12%);
+    transition-timing-function: ease-in-out;
+}
+.processes ul li i{
+    margin-right: 14px;
+    margin-left: 1rem;
+}
+/*---------USUARIOS---------*/
+.users{
+    font-size: 16px;
+    margin-bottom: 1rem;
+}
+.users b{
+    margin-bottom: 5px;
+    margin-left: 1rem;
+}
+.users ul{
+    padding: 0;
+    margin: 0;
+    list-style: none;
+    color: white;
+}
+.users ul li{
+    margin: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    height: 30px;
+}
+.users ul li:hover{
+    background-color: rgb(121, 121, 255);
+    transition: .1s;
+}
+.users ul li:hover i{
+    transition: .1s;
+    transform: translateX(50%);
+    transition-timing-function: ease-in-out;
+}
+.users ul li:hover p{
+    transition: .1s;
+    transform: translateX(12%);
+    transition-timing-function: ease-in-out;
+}
+.users ul li i{
+    margin-right: 14px;
+    margin-left: 1rem;
+}
+.sidebar a{
+    text-decoration: none;
+    color: white;
+}
+#close{
+    display: flex;
+    align-items: center;
+    padding: 1% 0;
+}
+#close i{
+    margin-right: 14px;
+    margin-left: 1rem;
+}
+#close:hover{
+    background-color: rgb(121, 121, 255);
+    transition: .1s;
+}
+#close:hover i{
+    transition: .1s;
+    transform: translateX(-50%);
+    transition-timing-function: ease-in-out;
+}
+#close:hover p{
+    transition: .1s;
+    transform: translateX(-30%);
+    transition-timing-function: ease-in-out;
+}
+/*--------------------------------------------------NAVBAR--------------------------------------------------*/
+.content{
+    right: 0;
+    position: absolute;
+    width: calc(100% - 180px);
+}
+.navbar{
+    height: 30px;
+    background-color: rgb(190, 190, 190);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1% 2rem;
+    box-shadow: 0 2px 3px rgba(0, 0, 0, 0.5);
+    font-family: 'Catamaran';
+    font-size: 20px;
+}
+.navbar img{
+    width: 70px;
+}
+/*--------------------------------------------------CONTENT--------------------------------------------------*/
+.data{
+    padding: 3%;
+}
+.container-form{
+    width: 80%;
+    justify-content: space-between;
+    font-family: 'Catamaran';
+}
+.container-form form label{
+    display: inline-flex;
+    font-size: 20px;
+    width: 150px;
+    margin-bottom: 1rem;
+}
+.container-form form input[type=text],[type=password]{
+    outline: none;
+    height: 12px;
+    width: 170px;
+    padding: 1%;
+    border-radius: 5px;
+    border: 1px solid rgb(180, 180, 180);
+    font-size: 14px;
+    transition: .1s;
+}
+.container-form form input[type=text]:focus,[type=password]:focus{
+    border: 1px solid black;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    transition-timing-function: ease-in-out;
+}
+.container-form form select{
+    outline: none;
+    height: 30px;
+    width: 190px;
+    padding: 5px;
+    border-radius: 5px;
+    border: 1px solid rgb(180, 180, 180);
+}
+.container-form form select option{
+    height: 20px;
+    padding: 5%;
+    font-size: 14px;
+}
+.container-form label span{
+    color:darkgrey;
+    font-size: 13px;
+    margin-left: 1em;
+    display: flex;
+    align-items: center;
+}
+.container-form form button{
+    width: 130px;
+    height: 32px;
+    border: none;
+    border-radius: 5px;
+    background-color: rgb(60, 127, 250);
+    color: white;
+    font-weight: bold;
+    transition: .1s;
+}
+.container-form form button:hover{
+    cursor: pointer;
+    background-color: rgb(111, 162, 255);
+    transition-timing-function: ease-in-out;
+}
+.container-form form button:active{
+    transform: scale(0.96);
+    transition-timing-function: ease-in-out;
+}
