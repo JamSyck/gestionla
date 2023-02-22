@@ -2,7 +2,7 @@
 include ("../../model/conexion.php");
 session_start();
 if(!isset($_SESSION['usuario'])){
-    echo "<script>alert('Debes iniciar sesion');location='/gestionla';</script>";
+    echo "<script>alert('Debes iniciar sesión');location='/gestionla'</script>";
     session_destroy();
     die();
 }
@@ -30,11 +30,14 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                     <?php while($row=mysqli_fetch_assoc($user)){?>
                         <img src='data:image/jpg;base64,<?php echo base64_encode($row["Imagen"])?>' alt='Foto'>
                         <b><?php echo $row["Nombre"]?></b>
-                        <p><?php echo $row["Rol"]?></p>
+                        <p><u><?php echo $row["Funcion"]?></u></p>
                     <?php } ?>
                 </div>
                 <hr>
                 <div class="processes">
+                    <a id="home" href="/gestionla/view/usuario1/principal.php">
+                        <b><i class='bx bx-home'></i>PRINCIPAL</b>
+                    </a>
                     <b>PROCESOS</b>
                     <ul>
                         <a href="#">
@@ -48,11 +51,10 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                         </a>
                     </ul>
                 </div>
-                <hr>
                 <div class="users">
                     <b>USUARIOS</b>
                     <ul>
-                        <a href="/gestionla/view/admin/crear-usuario.php">
+                        <a href="/gestionla/view/usuario1/crear-usuario.php">
                             <li><i class='bx bxs-user-plus'></i><p>Crear usuario</p></li>
                         </a>
                         <a href="#">
@@ -77,7 +79,7 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                         <input type="text" name="name" id="name" onkeypress="return sololetras(event)" required><br>
                         <label for="pass"><b>Contraseña</b>*</label>
                         <input type="password" name="pass" id="pass" required><br>
-                        <label for="rol"><b>Rol</b>*</label>
+                        <label for="rol"><b>Función</b>*</label>
                         <select name="rol" id="rol" required>
                             <option value="" disabled selected hidden>Seleccione</option>
                             <option value="Edición">Edición</option>
@@ -96,28 +98,31 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
 </html>
 <?php
 include ("../../model/conexion.php");
+error_reporting(0);
 
 $name=$_POST["name"];
 $pass=$_POST["pass"];
 $rol=$_POST["rol"];
-$img=addslashes(file_get_contents($_FILES["image"]['tmp_name'])) || null;
+$img=addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
 
-$query=mysqli_query($conx,"INSERT INTO usuarios (Nombre,Contraseña,Rol,Imagen) VALUES ('$name','$pass','$rol','$img')");
+$query=mysqli_query($conx,"INSERT INTO usuarios (Nombre, Contraseña, Funcion, Imagen) VALUES ('$name','$pass','$rol','$img')");
 if($query){
     echo "<script>
-        Swal.fire({
-            title: 'Listo',
-            text: 'Usuario registrado exitosamente',
-            icon: 'success',
-            confirmButtonColor: '#3085d6',
-            confirmButtonText: 'OK'
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    window.location='/gestionla/view/admin/crear-usuario.php';
-                }
-            })
+    Swal.fire({
+        position: 'center',
+        icon: 'success',
+        title: 'Usuario creado con éxito',
+        showConfirmButton: true,
+      })
     </script>";
 }else{
-    echo 'Error';
+    echo "<script>
+    Swal.fire({
+        position: 'center',
+        icon: 'error',
+        title: 'Ha ocurrido en error',
+        showConfirmButton: true,
+    })
+    </script>";
 }
 ?>

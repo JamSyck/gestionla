@@ -3,8 +3,8 @@
     src: url(../fonts/Nunito-VariableFont_wght.ttf);
 }
 @font-face {
-    font-family: 'Odor Mean Chey';
-    src: url(../fonts/OdorMeanChey-Regular.ttf);
+    font-family: 'Amaranth';
+    src: url(../fonts/Amaranth-Bold.ttf);
 }
 body{
     margin: 0;
@@ -42,7 +42,7 @@ form{
 }
 form h2{
     margin-bottom: 2rem;
-    font-family: 'Odor Mean Chey';
+    font-family: 'Amaranth';
 }
 form label{
     font-family: 'Nanito ExraLight';
@@ -83,21 +83,19 @@ form hr{
     margin: 1rem auto;
     width: 80%;
 }
+form center{
+    text-align: center;
+    padding: 2% 0;
+}
 form a{
     text-decoration: none;
     color:slategrey;
     font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
 }
 form a:hover{
-    color: maroon;
+    color: rgb(180, 0, 0);
     text-decoration: underline;
     transition: .1s ease;
-}
-#alert{
-    color: red;
-    font-size: 13px;
-    margin-bottom: 0;
-    visibility: hidden;
 }
 /*--------------------------------------------------<|"RESPONSIVE"|>--------------------------------------------------*/
 @media (max-width:500px) {

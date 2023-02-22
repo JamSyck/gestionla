@@ -2,7 +2,7 @@
 include ("../../model/conexion.php");
 session_start();
 if(!isset($_SESSION['usuario'])){
-    echo "<script>alert('Debes iniciar sesion');location='/gestionla';</script>";
+    echo "<script>alert('Debes iniciar sesión');location='/gestionla';</script>";
     session_destroy();
     die();
 }
@@ -15,7 +15,7 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="shortcut icon" href="/gestionla/images/logo.png" type="image/x-icon">
-    <link rel="stylesheet" href="/gestionla/styles/user1.css">
+    <link rel="stylesheet" href="/gestionla/styles/user2.css">
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'>
     <title>Sistema de Gestión de Calidad | LICOAMERICA</title>
 </head>
@@ -28,11 +28,14 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                     <?php while($row=mysqli_fetch_assoc($user)){?>
                         <img src='data:image/jpg;base64,<?php echo base64_encode($row["Imagen"])?>'>
                         <b><?php echo $row["Nombre"]?></b>
-                        <p><u><?php echo $row["Rol"]?></u></p>
+                        <p><u><?php echo $row["Funcion"]?></u></p>
                     <?php } ?>
                 </div>
                 <hr>
                 <div class="processes">
+                    <a id="home" href="/gestionla/view/usuario2/principal.php">
+                        <b><i class='bx bx-home'></i>PRINCIPAL</b>
+                    </a>
                     <b>PROCESOS</b>
                     <ul>
                         <a href="#">
@@ -43,18 +46,6 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                         </a>
                         <a href="#">
                             <li><i class='bx bx-file'></i><p>Registros</p></li>
-                        </a>
-                    </ul>
-                </div>
-                <hr>
-                <div class="users">
-                    <b>USUARIOS</b>
-                    <ul>
-                        <a href="/gestionla/view/admin/crear-usuario.php">
-                            <li><i class='bx bxs-user-plus'></i><p>Crear usuario</p></li>
-                        </a>
-                        <a href="#">
-                            <li><i class='bx bxs-group'></i><p>Administrar</p></li>
                         </a>
                     </ul>
                 </div>
