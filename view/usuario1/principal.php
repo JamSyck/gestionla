@@ -33,7 +33,7 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                 </div>
                 <hr>
                 <div class="processes">
-                    <a id="home" href="/gestionla/view/usuario1/principal.php">
+                    <a id="home" href="./principal.php">
                         <b><i class='bx bx-home'></i>PRINCIPAL</b>
                     </a>
                     <b>PROCESOS</b>
@@ -52,10 +52,13 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                 <div class="users">
                     <b>USUARIOS</b>
                     <ul>
-                        <a href="/gestionla/view/usuario1/crear-usuario.php">
+                        <a href="#">
+                            <li><i class='bx bxs-user'></i><p>Mi perfil</p></li>
+                        </a>
+                        <a href="./crear-usuario.php">
                             <li><i class='bx bxs-user-plus'></i><p>Crear usuario</p></li>
                         </a>
-                        <a href="#">
+                        <a href="./administrar-usuarios.php">
                             <li><i class='bx bxs-group'></i><p>Administrar</p></li>
                         </a>
                     </ul>

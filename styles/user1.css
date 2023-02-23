@@ -2,6 +2,10 @@
     font-family: 'Catamaran';
     src: url(../fonts/Catamaran-VariableFont_wght.ttf);
 }
+@font-face {
+    font-family: 'Heebo';
+    src: url(../fonts/Heebo-VariableFont_wght.ttf);
+}
 body{
     margin: 0;
     padding: 0;
@@ -185,6 +189,7 @@ main{
 .data{
     padding: 3%;
 }
+/*------------------------------CREAR USUARIO------------------------------*/
 .container-form{
     width: 80%;
     justify-content: space-between;
@@ -195,6 +200,9 @@ main{
     font-size: 20px;
     width: 150px;
     margin-bottom: 1rem;
+}
+.container-form form label span{
+    margin-left: 5px;
 }
 .container-form form input[type=text],[type=password]{
     outline: none;
@@ -249,4 +257,50 @@ main{
 .container-form form button:active{
     transform: scale(0.96);
     transition-timing-function: ease-in-out;
+}
+/*------------------------------ADMINISTRAR USUARIOS------------------------------*/
+.table-users table{
+    width: 100%;
+    font-family: 'Catamaran';
+    text-align: center;
+    border-collapse: collapse;
+}
+.table-users table thead{
+    font-size: 22px;
+    border-bottom: 1px solid rgb(0, 0, 0);
+}
+.table-users table tbody td .foto{
+    display:flex;
+    justify-content: center;
+}
+.table-users table img{
+    border-radius: 50%;
+    height: 35px;
+}
+.table-users table td{
+    border-bottom: 1px solid rgb(201, 201, 201);
+}
+.table-users table tbody tr:hover{
+    background-color: rgb(224, 224, 224);
+}
+.table-users table tbody td a:nth-child(1){
+    margin: 0 .5em;
+    background-color:deepskyblue;
+    border-radius: 6px;
+    padding: .5% 1%;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+.table-users table tbody td a:nth-child(2){
+    margin: 0 .5em;
+    background-color:red;
+    border-radius: 6px;
+    padding: .5% 1%;
+    text-decoration: none;
+    color: white;
+    font-size: 14px;
+}
+#fecha{
+    font-family: 'Heebo';
 }

@@ -40,6 +40,7 @@ if(isset($_POST)){
     if(strlen($_POST["name"])>=1 && strlen($_POST["pass"])>=1){
         $name=trim($_POST["name"]);
         $pass=trim($_POST["pass"]);
+        $pass=hash('sha512',$pass);
 
         $query=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$name' AND Contraseña='$pass'");
         $result=mysqli_fetch_array($query);

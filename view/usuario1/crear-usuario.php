@@ -19,7 +19,7 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="/gestionla/js/validacion.js"></script>
-    <title>Crear usuario | Sistema de Gestión de Calidad de LICOAMERICA</title>
+    <title>Crear usuario | LICOAMERICA</title>
 </head>
 <body>
     <main class="dashboard">
@@ -35,7 +35,7 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                 </div>
                 <hr>
                 <div class="processes">
-                    <a id="home" href="/gestionla/view/usuario1/principal.php">
+                    <a id="home" href="./principal.php">
                         <b><i class='bx bx-home'></i>PRINCIPAL</b>
                     </a>
                     <b>PROCESOS</b>
@@ -54,10 +54,10 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                 <div class="users">
                     <b>USUARIOS</b>
                     <ul>
-                        <a href="/gestionla/view/usuario1/crear-usuario.php">
+                        <a href="./crear-usuario.php">
                             <li><i class='bx bxs-user-plus'></i><p>Crear usuario</p></li>
                         </a>
-                        <a href="#">
+                        <a href="./administrar-usuarios.php">
                             <li><i class='bx bxs-group'></i><p>Administrar</p></li>
                         </a>
                     </ul>
@@ -75,11 +75,11 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
             <div class="data">
                 <div class="container-form">
                     <form method="post" enctype="multipart/form-data">
-                        <label for="name"><b>Nombre</b>*</label>
+                        <label for="name"><b>Nombre</b><span style="color:red">*</span></label>
                         <input type="text" name="name" id="name" onkeypress="return sololetras(event)" required><br>
-                        <label for="pass"><b>Contraseña</b>*</label>
+                        <label for="pass"><b>Contraseña</b><span style="color:red">*</span></label>
                         <input type="password" name="pass" id="pass" required><br>
-                        <label for="rol"><b>Función</b>*</label>
+                        <label for="rol"><b>Función</b><span style="color:red">*</span></label>
                         <select name="rol" id="rol" required>
                             <option value="" disabled selected hidden>Seleccione</option>
                             <option value="Edición">Edición</option>
@@ -104,6 +104,7 @@ $name=$_POST["name"];
 $pass=$_POST["pass"];
 $rol=$_POST["rol"];
 $img=addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+$pass=hash('sha512',$pass);
 
 $query=mysqli_query($conx,"INSERT INTO usuarios (Nombre, Contraseña, Funcion, Imagen) VALUES ('$name','$pass','$rol','$img')");
 if($query){
