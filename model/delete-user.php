@@ -1,13 +1,12 @@
 <?php
 include ("conexion.php");
-include ("swal.php");
 
 $id=$_GET["id"];
 
 $query=mysqli_query($conx,"DELETE FROM usuarios WHERE idUsuario='$id'");
 if($query){
-    echo "OK";
+    header("location:/gestionla/view/usuario1/administrar-usuarios.php");
 }else{
-    echo "No pude";
+    echo "ERROR";
 }
 ?>

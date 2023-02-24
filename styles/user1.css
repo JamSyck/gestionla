@@ -195,16 +195,15 @@ main{
     justify-content: space-between;
     font-family: 'Catamaran';
 }
-.container-form form label{
+.container-form label{
     display: inline-flex;
     font-size: 20px;
     width: 150px;
-    margin-bottom: 1rem;
 }
-.container-form form label span{
+.container-form label span{
     margin-left: 5px;
 }
-.container-form form input[type=text],[type=password]{
+.container-form input[type=text],[type=password]{
     outline: none;
     height: 12px;
     width: 170px;
@@ -214,12 +213,12 @@ main{
     font-size: 14px;
     transition: .1s;
 }
-.container-form form input[type=text]:focus,[type=password]:focus{
+.container-form input[type=text]:focus,[type=password]:focus{
     border: 1px solid black;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
     transition-timing-function: ease-in-out;
 }
-.container-form form select{
+.container-form select{
     outline: none;
     height: 30px;
     width: 190px;
@@ -227,7 +226,7 @@ main{
     border-radius: 5px;
     border: 1px solid rgb(180, 180, 180);
 }
-.container-form form select option{
+.container-form select option{
     height: 20px;
     padding: 5%;
     font-size: 14px;
@@ -239,7 +238,7 @@ main{
     display: flex;
     align-items: center;
 }
-.container-form form button{
+.container-form button{
     width: 130px;
     height: 32px;
     border: none;
@@ -249,14 +248,87 @@ main{
     font-weight: bold;
     transition: .1s;
 }
-.container-form form button:hover{
+.container-form button:hover{
     cursor: pointer;
     background-color: rgb(111, 162, 255);
     transition-timing-function: ease-in-out;
 }
-.container-form form button:active{
+.container-form button:active{
     transform: scale(0.96);
     transition-timing-function: ease-in-out;
+}
+.camp-name{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.camp-name span{
+    margin-left: 1rem;
+}
+.camp-pass{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.camp-pass span{
+    margin-left: 1rem;
+}
+.camp-rol{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+.camp-image{
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+}
+#alert-name, #alert-pass{
+    font-size: 14px;
+    color: red;
+    display: none;
+}
+.custom-input-file{
+    background-color: #ffa047;
+    color: #fff;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: bold;
+    min-height: 15px;
+    overflow: hidden;
+    padding: .5%;
+    position: relative;
+    text-align: center;
+    width: 80px;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: .1s;
+}
+.custom-input-file:hover{
+    background-color: #ffbb7b;
+
+}
+.custom-input-file:active{
+    transform: scale(0.96);
+    transition-timing-function: ease-in-out;
+}
+.custom-input-file i{
+    margin-right: 7px;
+    font-size: 18px;
+}
+.input-file{
+    border: 10000px solid transparent;
+    cursor: pointer;
+    font-size: 10000px;
+    margin: 0;
+    opacity: 0;
+    outline: 0 none;
+    padding: 0;
+    position: absolute;
+    right: -1000px;
+    top: -1000px;
 }
 /*------------------------------ADMINISTRAR USUARIOS------------------------------*/
 .table-users table{

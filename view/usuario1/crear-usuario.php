@@ -74,20 +74,34 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
             </div>
             <div class="data">
                 <div class="container-form">
-                    <form method="post" enctype="multipart/form-data">
-                        <label for="name"><b>Nombre</b><span style="color:red">*</span></label>
-                        <input type="text" name="name" id="name" onkeypress="return sololetras(event)" required><br>
-                        <label for="pass"><b>Contraseña</b><span style="color:red">*</span></label>
-                        <input type="password" name="pass" id="pass" required><br>
-                        <label for="rol"><b>Función</b><span style="color:red">*</span></label>
-                        <select name="rol" id="rol" required>
-                            <option value="" disabled selected hidden>Seleccione</option>
-                            <option value="Edición">Edición</option>
-                            <option value="Consulta">Consulta</option>
-                            <option value="Descarga">Descarga</option>
-                        </select><br>
-                        <label for="image"><b>Foto</b><span><i>Opcional</i></span></label>
-                        <input type="file" name="image" id="image"><br>
+                    <form method="post" enctype="multipart/form-data" onsubmit="return crear(event)">
+                        <div class="camp-name">
+                            <label for="name"><b>Nombre</b><span style="color:red">*</span></label>
+                            <input type="text" name="name" id="name" onkeypress="return sololetras(event)" required>
+                            <span id="alert-name"><i>El nombre es muy corto</i></span><br>
+                        </div>
+                        <div class="camp-pass">
+                            <label for="pass"><b>Contraseña</b><span style="color:red">*</span></label>
+                            <input type="password" name="pass" id="pass" required>
+                            <span id="alert-pass"><i>La contraseña es muy corta</i></span><br>
+                        </div>
+                        <div class="camp-rol">
+                            <label for="rol"><b>Función</b><span style="color:red">*</span></label>
+                            <select name="rol" id="rol" required>
+                                <option value="" disabled selected hidden>Seleccione</option>
+                                <option value="Edición">Edición</option>
+                                <option value="Consulta">Consulta</option>
+                                <option value="Descarga">Descarga</option>
+                            </select><br>
+                        </div>
+                        <div class="camp-image">
+                            <label for="image"><b>Foto</b><span><i>Opcional</i></span></label>
+                            <div class="custom-input-file">
+                                <i class='bx bx-cloud-upload'></i>Subir
+                                <br>
+                                <input type="file" class="input-file" name="image" id="image"><br>
+                            </div>
+                        </div>
                         <button id="btn-crt" type="submit">Crear</button>
                     </form>
                 </div>
@@ -123,7 +137,7 @@ if($query){
         icon: 'error',
         title: 'Ha ocurrido en error',
         showConfirmButton: true,
-    })
+    });return false;
     </script>";
 }
 ?>

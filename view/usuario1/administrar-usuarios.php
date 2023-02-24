@@ -107,7 +107,7 @@ $usuarios=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre!='$_SESSION[us
                                             echo "<a id='user-block' href='#'><i class='bx bxs-lock'></i> Bloquear</a>";
                                         }
                                     ?>
-                                    <a id="user-delete" href="/gestionla/model/delete-user.php?id=<?php echo $data["idUsuario"]?>"><i class='bx bxs-trash'></i> Eliminar</a>
+                                    <a id="user-delete" href="/gestionla/model/delete-user.php?id=<?php echo $data["idUsuario"]?>"><i class="bx bxs-trash"></i> Eliminar</a>
                                 </td>
                             </tr>
                         <?php } ?>
@@ -117,49 +117,5 @@ $usuarios=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre!='$_SESSION[us
             </div>
         </section>
     </main>
-    <script>
-        function eliminar(e){
-            e.preventDefault();
-            const href = $(this).attr('href');
-
-            const swalWithBootstrapButtons = Swal.mixin({
-                customClass: {
-                    confirmButton: 'btn btn-success',
-                    cancelButton: 'btn btn-danger'
-                },
-                buttonsStyling: false
-            })
-
-            swalWithBootstrapButtons.fire({
-                title: '¿Estás seguro de eliminarlo?',
-                text: "Esta acción no se puede revertir",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonText: 'Si, quiero eliminar',
-                cancelButtonText: 'No, cancelar',
-                reverseButtons: true
-            }).then((result) => {
-                if (result.isConfirmed) {
-                    swalWithBootstrapButtons.fire(
-                        'Eliminado',
-                        'El usuario ha sido eliminado correctamente!',
-                        'success'
-                    )
-                } else if (
-                    result.dismiss === Swal.DismissReason.cancel
-                ) {
-                    swalWithBootstrapButtons.fire(
-                        'Cancelado',
-                        'Has cancelado la eliminación!',
-                        'error'
-                    )
-                }
-            })
-        }
-        let del = document.querySelectorAll("#user-delete");
-            for (var i = 0; i < del.length; i++) {
-                del[i].addEventListener('click', eliminar);
-            }
-    </script>
 </body>
 </html>

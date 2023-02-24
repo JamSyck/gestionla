@@ -1,52 +1,18 @@
 .header{
-    height: 30px;
+    height: 20px;
     background-color: gray;
     display: flex;
     align-items: center;
     padding: 1rem;
+    position: static;
+    margin-bottom: 1.7rem;
 }
 .header img{
-    height: 45px;
+    height: 35px;
     margin-left: 3em;
 }
 /*--------------------------------------------------<|"RESPONSIVE"|>--------------------------------------------------*/
-@media (max-width:500px) {
-    .header{
-        height: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .header img{
-        margin-left: 0;
-        height: 32px;
-    }
-}
-@media (max-width:450px) {
-    .header{
-        height: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .header img{
-        margin-left: 0;
-        height: 32px;
-    }
-}
-@media (max-width:400px) {
-    .header{
-        height: 15px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
-    .header img{
-        margin-left: 0;
-        height: 32px;
-    }
-}
-@media (max-width:350px) {
+@media (min-width:300px) and (max-width:600px) {
     .header{
         height: 15px;
         display: flex;
