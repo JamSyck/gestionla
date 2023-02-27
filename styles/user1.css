@@ -21,6 +21,7 @@ main{
     height: 100vh;
     z-index: 1;
     font-family: 'Catamaran';
+    transition: all 500ms;
 }
 .sidebar img{
     display: flex;
@@ -31,6 +32,9 @@ main{
 .profile{
     text-align: center;
     color: white;
+}
+.profile i{
+    display: none;
 }
 .profile b, p{
     margin: 0;
@@ -182,6 +186,15 @@ main{
     font-family: 'Catamaran';
     font-size: 20px;
 }
+.navbar .title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.navbar i{
+    display: none;
+    margin-right: 1rem;
+}
 .navbar img{
     width: 70px;
 }
@@ -238,7 +251,7 @@ main{
     display: flex;
     align-items: center;
 }
-.container-form button{
+.container-form #btn-crt{
     width: 130px;
     height: 32px;
     border: none;
@@ -248,12 +261,12 @@ main{
     font-weight: bold;
     transition: .1s;
 }
-.container-form button:hover{
+.container-form #btn-crt:hover{
     cursor: pointer;
     background-color: rgb(111, 162, 255);
     transition-timing-function: ease-in-out;
 }
-.container-form button:active{
+.container-form #btn-crt:active{
     transform: scale(0.96);
     transition-timing-function: ease-in-out;
 }
@@ -346,6 +359,7 @@ main{
     justify-content: center;
 }
 .table-users table img{
+    overflow: hidden;
     border-radius: 50%;
     height: 35px;
 }
@@ -375,4 +389,42 @@ main{
 }
 #fecha{
     font-family: 'Heebo';
+}
+/***--------------------------------------------------<=|["RESPONSIVE"]|=>--------------------------------------------------***/
+@media (min-width:350px) and (max-width:600px) {
+    .menu{
+        position: absolute;
+        left: -180px;
+        overflow: scroll;
+    }
+    .content{
+        position: fixed;
+        width: 100%;
+    }
+    .navbar{
+        padding: 1% 1rem;
+    }
+    .navbar i{
+        display: block;
+    }
+    .navbar b{
+        font-size: 15px;
+    }
+    .navbar img{
+        width: 45px;
+    }
+    .profile i{
+        display: block;
+        top: 10px;
+        left: 10px;
+        position: absolute;
+        font-size: 25px;
+        font-weight: bold;
+    }
+    .container-form{
+        width: 100%;
+    }
+    form{
+        transform: scale(90%);
+    }
 }

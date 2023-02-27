@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -12,7 +11,6 @@
     <script src="/gestionla/js/validacion.js"></script>
     <title>LICOAMÉRICA - Sistema de Gestión de Calidad</title>
 </head>
-
 <body>
     <div class="container-main">
         <div class="container">
@@ -32,7 +30,6 @@
                 </form>
             </div>
         </div>
-        <!--MODAL-->
         <div id="modal" class="modal">
             <div class="modal-header">
                 <h3>Recuperar mi contraseña</h3>

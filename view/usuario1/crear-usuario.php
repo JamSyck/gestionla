@@ -1,15 +1,16 @@
 <?php
-include ("../../model/conexion.php");
+include("../../model/conexion.php");
 session_start();
-if(!isset($_SESSION['usuario'])){
+if (!isset($_SESSION['usuario'])) {
     echo "<script>alert('Debes iniciar sesión');location='/gestionla'</script>";
     session_destroy();
     die();
 }
-$user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario]'");
+$user = mysqli_query($conx, "SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario]'");
 ?>
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -21,16 +22,18 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
     <script src="/gestionla/js/validacion.js"></script>
     <title>Crear usuario | LICOAMERICA</title>
 </head>
+
 <body>
     <main class="dashboard">
         <!--SIDEBAR-->
-        <section class="menu">
+        <section id="menu" class="menu">
             <div class="sidebar">
                 <div class="profile">
-                    <?php while($row=mysqli_fetch_assoc($user)){?>
-                        <img src='data:image/jpg;base64,<?php echo base64_encode($row["Imagen"])?>' alt='Foto'>
-                        <b><?php echo $row["Nombre"]?></b>
-                        <p><u><?php echo $row["Funcion"]?></u></p>
+                    <i id="btn-close" class='bx bx-x'></i>
+                    <?php while ($row = mysqli_fetch_assoc($user)) { ?>
+                        <img src='data:image/jpg;base64,<?php echo base64_encode($row["Imagen"]) ?>' alt='Foto'>
+                        <b><?php echo $row["Nombre"] ?></b>
+                        <p><u><?php echo $row["Funcion"] ?></u></p>
                     <?php } ?>
                 </div>
                 <hr>
@@ -41,13 +44,19 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                     <b>PROCESOS</b>
                     <ul>
                         <a href="#">
-                            <li><i class='bx bx-archive'></i><p>Procedimientos</p></li>
+                            <li><i class='bx bx-archive'></i>
+                                <p>Procedimientos</p>
+                            </li>
                         </a>
                         <a href="#">
-                            <li><i class='bx bx-spreadsheet'></i><p>Guías</p></li>
+                            <li><i class='bx bx-spreadsheet'></i>
+                                <p>Guías</p>
+                            </li>
                         </a>
                         <a href="#">
-                            <li><i class='bx bx-file'></i><p>Registros</p></li>
+                            <li><i class='bx bx-file'></i>
+                                <p>Registros</p>
+                            </li>
                         </a>
                     </ul>
                 </div>
@@ -55,21 +64,30 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                     <b>USUARIOS</b>
                     <ul>
                         <a href="./crear-usuario.php">
-                            <li><i class='bx bxs-user-plus'></i><p>Crear usuario</p></li>
+                            <li><i class='bx bxs-user-plus'></i>
+                                <p>Crear usuario</p>
+                            </li>
                         </a>
                         <a href="./administrar-usuarios.php">
-                            <li><i class='bx bxs-group'></i><p>Administrar</p></li>
+                            <li><i class='bx bxs-group'></i>
+                                <p>Administrar</p>
+                            </li>
                         </a>
                     </ul>
                 </div>
                 <hr>
-                <a id="close" href="/gestionla/model/close.php"><i class='bx bx-log-out'></i><p>Salir</p></a>
+                <a id="close" href="/gestionla/model/close.php"><i class='bx bx-log-out'></i>
+                    <p>Salir</p>
+                </a>
             </div>
         </section>
         <!--CONTENT-->
         <section class="content">
             <div class="navbar">
-                <b>CREAR USUARIO</b>
+                <div class="title">
+                    <i id="btn-menu" class='bx bx-menu'></i>
+                    <b>CREAR USUARIO</b>
+                </div>
                 <img src="/gestionla/images/logo.png" alt="LICOAMERICA">
             </div>
             <div class="data">
@@ -99,45 +117,66 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                             <div class="custom-input-file">
                                 <i class='bx bx-cloud-upload'></i>Subir
                                 <br>
-                                <input type="file" class="input-file" name="image" id="image"><br>
+                                <input type="file" class="input-file" name="image" id="image" accept="image/*"><br>
                             </div>
                         </div>
-                        <button id="btn-crt" type="submit">Crear</button>
+                        <input id="btn-crt" type="submit" name="create-user" value="Crear">
                     </form>
                 </div>
             </div>
         </section>
     </main>
+    <script src="/gestionla/js/sidebar.js"></script>
 </body>
+
 </html>
 <?php
-include ("../../model/conexion.php");
-error_reporting(0);
+include("../../model/conexion.php");
 
-$name=$_POST["name"];
-$pass=$_POST["pass"];
-$rol=$_POST["rol"];
-$img=addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
-$pass=hash('sha512',$pass);
+if($_SERVER["REQUEST_METHOD"]=="POST"){
 
-$query=mysqli_query($conx,"INSERT INTO usuarios (Nombre, Contraseña, Funcion, Imagen) VALUES ('$name','$pass','$rol','$img')");
-if($query){
+    if(isset($_POST["name"])){
+        $name=$_POST["name"];
+    }else{
+        $name="";
+    }
+    if(isset($_POST["pass"])){
+        $pass=$_POST["pass"];
+    }else{
+        $pass="";
+    }
+    if(isset($_POST["rol"])){
+        $rol=$_POST["rol"];
+    }else{
+        $rol="";
+    }
+    if(file_exists($_FILES["image"]["tmp_name"])){
+        $img=addslashes(file_get_contents($_FILES["image"]["tmp_name"]));
+    }else{
+        $img="";
+    }
+
+    $pass=hash('sha512',$pass);
+
+    $query=mysqli_query($conx,"INSERT INTO usuarios (Nombre, Contraseña, Funcion, Imagen) VALUES ('$name','$pass','$rol','$img')");
+    if($query){
     echo "<script>
     Swal.fire({
         position: 'center',
         icon: 'success',
         title: 'Usuario creado con éxito',
         showConfirmButton: true,
-      })
+        })
     </script>";
-}else{
+    }else{
     echo "<script>
     Swal.fire({
         position: 'center',
         icon: 'error',
         title: 'Ha ocurrido en error',
         showConfirmButton: true,
-    });return false;
+    })
     </script>";
+    }
 }
 ?>

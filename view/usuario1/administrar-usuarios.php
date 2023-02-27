@@ -19,17 +19,17 @@ $usuarios=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre!='$_SESSION[us
     <link rel="stylesheet" href="/gestionla/styles/user1.css">
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <script src="/gestionla/js/fecha.js"></script>
     <title>Administrar usuarios | LICOAMERICA</title>
 </head>
 <body>
     <main class="dashboard">
         <!--SIDEBAR-->
-        <section class="menu">
+        <section id="menu" class="menu">
             <div class="sidebar">
                 <div class="profile">
+                    <i id="btn-close" class='bx bx-x'></i>
                     <?php while($row=mysqli_fetch_assoc($user)){?>
-                        <img src='data:image/jpg;base64,<?php echo base64_encode($row["Imagen"])?>'>
+                        <img src='data:image/jpg;base64,<?php echo base64_encode($row['Imagen'])?>'>
                         <b><?php echo $row["Nombre"]?></b>
                         <p><u><?php echo $row["Funcion"]?></u></p>
                     <?php } ?>
@@ -70,8 +70,10 @@ $usuarios=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre!='$_SESSION[us
         <!--CONTENT-->
         <section class="content">
             <div class="navbar">
-                <b>ADMINISTRAR USUARIOS</b>
-                <div id="fecha"></div>
+                <div class="title">
+                    <i id="btn-menu" class='bx bx-menu'></i>
+                    <b>ADMINISTRAR USUARIOS</b>
+                </div>
                 <img src="/gestionla/images/logo.png" alt="LICOAMERICA">
             </div>
             <div class="data">
@@ -117,5 +119,6 @@ $usuarios=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre!='$_SESSION[us
             </div>
         </section>
     </main>
+    <script src="/gestionla/js/sidebar.js"></script>
 </body>
 </html>
