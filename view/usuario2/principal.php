@@ -8,6 +8,7 @@ if(!isset($_SESSION['usuario'])){
 }
 $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario]'");
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,11 +23,16 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
 <body>
     <main class="dashboard">
         <!--SIDEBAR-->
-        <section class="menu">
+        <section id="menu" class="menu">
             <div class="sidebar">
                 <div class="profile">
+                    <i id="btn-close" class='bx bx-x'></i>
                     <?php while($row=mysqli_fetch_assoc($user)){?>
-                        <img src='data:image/jpg;base64,<?php echo base64_encode($row["Imagen"])?>'>
+                        <?php if($row["Imagen"]>1) { ?>
+                            <img src="data:image/jpg;base64, <?php echo base64_encode($row["Imagen"])?>">
+                        <?php }else{ ?>
+                            <img src="/gestionla/images/photo.jpg" alt="Sin foto">
+                        <?php } ?>
                         <b><?php echo $row["Nombre"]?></b>
                         <p><u><?php echo $row["Funcion"]?></u></p>
                     <?php } ?>
@@ -54,13 +60,17 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
             </div>
         </section>
         <!--CONTENT-->
-        <section class="content">
+        <section class="main">
             <div class="navbar">
-                <b>SISTEMA DE GESTIÓN DE CALIDAD</b>
+                <div class="title">
+                    <i id="btn-menu" class='bx bx-menu'></i>
+                    <b>SISTEMA DE GESTIÓN DE CALIDAD</b>
+                </div>
                 <img src="/gestionla/images/logo.png" alt="LICOAMERICA">
             </div>
-            <div class="data"></div>
+            <div class="content">...</div>
         </section>
     </main>
+    <script src="/gestionla/js/sidebar.js"></script>
 </body>
 </html>

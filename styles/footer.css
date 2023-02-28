@@ -1,4 +1,4 @@
-.footer{
+footer{
     background-color: gray;
     color: white;
     width: 100%;
@@ -9,9 +9,9 @@
     font-size: 13px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
-/*--------------------------------------------------<|"RESPONSIVE"|>--------------------------------------------------*/
+/*--------------------------------------------------<=|["RESPONSIVE"]|=>--------------------------------------------------*/
 @media (min-width:300px) and (max-width:600px) {
-    .footer{
+    footer{
         font-size: 10px;
     }
 }

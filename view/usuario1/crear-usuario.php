@@ -8,9 +8,9 @@ if (!isset($_SESSION['usuario'])) {
 }
 $user = mysqli_query($conx, "SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario]'");
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -22,7 +22,6 @@ $user = mysqli_query($conx, "SELECT * FROM usuarios WHERE Nombre='$_SESSION[usua
     <script src="/gestionla/js/validacion.js"></script>
     <title>Crear usuario | LICOAMERICA</title>
 </head>
-
 <body>
     <main class="dashboard">
         <!--SIDEBAR-->
@@ -31,7 +30,11 @@ $user = mysqli_query($conx, "SELECT * FROM usuarios WHERE Nombre='$_SESSION[usua
                 <div class="profile">
                     <i id="btn-close" class='bx bx-x'></i>
                     <?php while ($row = mysqli_fetch_assoc($user)) { ?>
-                        <img src='data:image/jpg;base64,<?php echo base64_encode($row["Imagen"]) ?>' alt='Foto'>
+                        <?php if($row["Imagen"]>1) { ?>
+                            <img src="data:image/jpg;base64, <?php echo base64_encode($row["Imagen"])?>">
+                        <?php }else{ ?>
+                            <img src="/gestionla/images/photo.jpg">
+                        <?php } ?>
                         <b><?php echo $row["Nombre"] ?></b>
                         <p><u><?php echo $row["Funcion"] ?></u></p>
                     <?php } ?>
@@ -43,20 +46,14 @@ $user = mysqli_query($conx, "SELECT * FROM usuarios WHERE Nombre='$_SESSION[usua
                     </a>
                     <b>PROCESOS</b>
                     <ul>
-                        <a href="#">
-                            <li><i class='bx bx-archive'></i>
-                                <p>Procedimientos</p>
-                            </li>
+                        <a href="./procedimientos.php">
+                            <li><i class='bx bx-archive'></i><p>Procedimientos</p></li>
                         </a>
                         <a href="#">
-                            <li><i class='bx bx-spreadsheet'></i>
-                                <p>Guías</p>
-                            </li>
+                            <li><i class='bx bx-spreadsheet'></i><p>Guías</p></li>
                         </a>
                         <a href="#">
-                            <li><i class='bx bx-file'></i>
-                                <p>Registros</p>
-                            </li>
+                            <li><i class='bx bx-file'></i><p>Registros</p></li>
                         </a>
                     </ul>
                 </div>
@@ -64,25 +61,22 @@ $user = mysqli_query($conx, "SELECT * FROM usuarios WHERE Nombre='$_SESSION[usua
                     <b>USUARIOS</b>
                     <ul>
                         <a href="./crear-usuario.php">
-                            <li><i class='bx bxs-user-plus'></i>
-                                <p>Crear usuario</p>
-                            </li>
+                            <li><i class='bx bxs-user-plus'></i><p>Crear usuario</p></li>
                         </a>
                         <a href="./administrar-usuarios.php">
-                            <li><i class='bx bxs-group'></i>
-                                <p>Administrar</p>
-                            </li>
+                            <li><i class='bx bxs-group'></i><p>Administrar</p></li>
                         </a>
                     </ul>
                 </div>
                 <hr>
-                <a id="close" href="/gestionla/model/close.php"><i class='bx bx-log-out'></i>
+                <a id="close" href="/gestionla/model/close.php">
+                    <i class='bx bx-log-out'></i>
                     <p>Salir</p>
                 </a>
             </div>
         </section>
         <!--CONTENT-->
-        <section class="content">
+        <section class="main">
             <div class="navbar">
                 <div class="title">
                     <i id="btn-menu" class='bx bx-menu'></i>
@@ -90,7 +84,7 @@ $user = mysqli_query($conx, "SELECT * FROM usuarios WHERE Nombre='$_SESSION[usua
                 </div>
                 <img src="/gestionla/images/logo.png" alt="LICOAMERICA">
             </div>
-            <div class="data">
+            <div class="content">
                 <div class="container-form">
                     <form method="post" enctype="multipart/form-data" onsubmit="return crear(event)">
                         <div class="camp-name">
@@ -114,13 +108,9 @@ $user = mysqli_query($conx, "SELECT * FROM usuarios WHERE Nombre='$_SESSION[usua
                         </div>
                         <div class="camp-image">
                             <label for="image"><b>Foto</b><span><i>Opcional</i></span></label>
-                            <div class="custom-input-file">
-                                <i class='bx bx-cloud-upload'></i>Subir
-                                <br>
-                                <input type="file" class="input-file" name="image" id="image" accept="image/*"><br>
-                            </div>
+                            <input type="file" name="image" id="image" accept="image/*">
                         </div>
-                        <input id="btn-crt" type="submit" name="create-user" value="Crear">
+                        <button id="btn-crt" type="submit">Crear</button>
                     </form>
                 </div>
             </div>
@@ -128,8 +118,8 @@ $user = mysqli_query($conx, "SELECT * FROM usuarios WHERE Nombre='$_SESSION[usua
     </main>
     <script src="/gestionla/js/sidebar.js"></script>
 </body>
-
 </html>
+
 <?php
 include("../../model/conexion.php");
 

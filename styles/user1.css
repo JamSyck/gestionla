@@ -14,6 +14,11 @@ main{
     display: flex;
     width: 100vh;
 }
+.main{
+    right: 0;
+    position: absolute;
+    width: calc(100% - 180px);
+}
 /*--------------------------------------------------SIDEBAR--------------------------------------------------*/
 .menu{
     background-color: rgb(87, 87, 87);
@@ -22,6 +27,10 @@ main{
     z-index: 1;
     font-family: 'Catamaran';
     transition: all 500ms;
+}
+.sidebar a{
+    text-decoration: none;
+    color: white;
 }
 .sidebar img{
     display: flex;
@@ -39,7 +48,7 @@ main{
 .profile b, p{
     margin: 0;
 }
-/*---------HOME----------*/
+/*---------------PRINCIPAL---------------*/
 #home{
     display: flex;
     margin-top: 1rem;
@@ -56,7 +65,7 @@ main{
     color: rgb(121, 121, 255);
     transition-timing-function: ease-in-out;
 }
-/*---------PROCESOS---------*/
+/*---------------PROCESOS---------------*/
 .processes{
     font-size: 16px;
     margin-bottom: 1rem;
@@ -98,7 +107,7 @@ main{
     transform: translateX(12%);
     transition-timing-function: ease-in-out;
 }
-/*---------USUARIOS---------*/
+/*---------------USUARIOS---------------*/
 .users{
     font-size: 16px;
     margin-bottom: 1rem;
@@ -140,10 +149,7 @@ main{
     transform: translateX(12%);
     transition-timing-function: ease-in-out;
 }
-.sidebar a{
-    text-decoration: none;
-    color: white;
-}
+/*---------------CERRAR SESION--------------*/
 #close{
     display: flex;
     align-items: center;
@@ -170,11 +176,6 @@ main{
     transition-timing-function: ease-in-out;
 }
 /*--------------------------------------------------NAVBAR--------------------------------------------------*/
-.content{
-    right: 0;
-    position: absolute;
-    width: calc(100% - 180px);
-}
 .navbar{
     height: 30px;
     background-color: rgb(190, 190, 190);
@@ -199,10 +200,10 @@ main{
     width: 70px;
 }
 /*--------------------------------------------------CONTENT--------------------------------------------------*/
-.data{
+.content{
     padding: 3%;
 }
-/*------------------------------CREAR USUARIO------------------------------*/
+/*-------------------------CREAR USUARIO-------------------------*/
 .container-form{
     width: 80%;
     justify-content: space-between;
@@ -296,54 +297,23 @@ main{
     align-items: center;
     margin-bottom: 1rem;
 }
+.camp-image input::file-selector-button{
+    cursor: pointer;
+    background-color: #ffa047;
+    width: 81px;
+    border: none;
+    padding: 7px;
+    border-radius: 5px;
+}
+.camp-image input::file-selector-button:hover{
+    background-color: #ffbb7b;
+}
 #alert-name, #alert-pass{
     font-size: 14px;
     color: red;
     display: none;
 }
-.custom-input-file{
-    background-color: #ffa047;
-    color: #fff;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bold;
-    min-height: 15px;
-    overflow: hidden;
-    padding: .5%;
-    position: relative;
-    text-align: center;
-    width: 80px;
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: .1s;
-}
-.custom-input-file:hover{
-    background-color: #ffbb7b;
-
-}
-.custom-input-file:active{
-    transform: scale(0.96);
-    transition-timing-function: ease-in-out;
-}
-.custom-input-file i{
-    margin-right: 7px;
-    font-size: 18px;
-}
-.input-file{
-    border: 10000px solid transparent;
-    cursor: pointer;
-    font-size: 10000px;
-    margin: 0;
-    opacity: 0;
-    outline: 0 none;
-    padding: 0;
-    position: absolute;
-    right: -1000px;
-    top: -1000px;
-}
-/*------------------------------ADMINISTRAR USUARIOS------------------------------*/
+/*-------------------------ADMINISTRAR USUARIOS-------------------------*/
 .table-users table{
     width: 100%;
     font-family: 'Catamaran';
@@ -387,9 +357,6 @@ main{
     color: white;
     font-size: 14px;
 }
-#fecha{
-    font-family: 'Heebo';
-}
 /***--------------------------------------------------<=|["RESPONSIVE"]|=>--------------------------------------------------***/
 @media (min-width:350px) and (max-width:600px) {
     .menu{
@@ -397,7 +364,7 @@ main{
         left: -180px;
         overflow: scroll;
     }
-    .content{
+    .main{
         position: fixed;
         width: 100%;
     }

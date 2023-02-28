@@ -7,7 +7,6 @@ if(!isset($_SESSION['usuario'])){
     die();
 }
 $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario]'");
-$usuarios=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre!='$_SESSION[usuario]' ORDER BY idUsuario DESC");
 ?>
 
 <!DOCTYPE html>
@@ -20,10 +19,11 @@ $usuarios=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre!='$_SESSION[us
     <link rel="stylesheet" href="/gestionla/styles/user1.css">
     <link rel='stylesheet' href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css'>
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    <title>Administrar usuarios | LICOAMERICA</title>
+    <title>Procedimientos | LICOAMERICA</title>
 </head>
 <body>
     <main class="dashboard">
+        <!--SIDEBAR-->
         <section id="menu" class="menu">
             <div class="sidebar">
                 <div class="profile">
@@ -79,59 +79,11 @@ $usuarios=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre!='$_SESSION[us
             <div class="navbar">
                 <div class="title">
                     <i id="btn-menu" class='bx bx-menu'></i>
-                    <b>ADMINISTRAR USUARIOS</b>
+                    <b>PROCEDIMIENTOS</b>
                 </div>
                 <img src="/gestionla/images/logo.png" alt="LICOAMERICA">
             </div>
-            <div class="content">
-                <div class="table-users">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Foto</th>
-                                <th>Nombre</th>
-                                <th>Función</th>
-                                <th>Estado</th>
-                                <th>Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <?php while($data=mysqli_fetch_assoc($usuarios)) { ?>
-                                <tr>
-                                    <td>
-                                        <div class="foto">
-                                            <?php if($data["Imagen"]>1) { ?>
-                                                <img src="data:image/jpg;base64, <?php echo base64_encode($data["Imagen"])?>">
-                                            <?php }else{ ?>
-                                                <img src="/gestionla/images/photo.jpg" alt="Sin foto">
-                                            <?php } ?>
-                                        </div>
-                                    </td>
-                                    <td><?php echo $data["Nombre"]?></td>
-                                    <td><?php echo $data["Funcion"]?></td>
-                                    <?php 
-                                        if($data["Estado"]=='Bloqueado'){
-                                            echo "<td style='color:red'>Bloqueado</td>";
-                                        }else{
-                                            echo "<td style='color:blue'>Desbloqueado</td>";
-                                        }
-                                    ?>
-                                    <td>
-                                        <?php
-                                            if($data["Estado"]=='Bloqueado'){
-                                                echo "<a id='user-block' href='#' style='background-color:green'><i class='bx bxs-lock-open'></i> Desbloquear</a>";
-                                            }else{
-                                                echo "<a id='user-block' href='#'><i class='bx bxs-lock'></i> Bloquear</a>";
-                                            }
-                                        ?>
-                                        <a id="user-delete" href="/gestionla/model/delete-user.php?id=<?php echo $data["idUsuario"]?>"><i class="bx bxs-trash"></i> Eliminar</a>
-                                    </td>
-                                </tr>
-                            <?php } ?>
-                        </tbody>
-                    </table>
-                </div>
-            </div>
+            <div class="content"></div>
         </section>
     </main>
     <script src="/gestionla/js/sidebar.js"></script>

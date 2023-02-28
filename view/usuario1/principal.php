@@ -8,6 +8,7 @@ if(!isset($_SESSION['usuario'])){
 }
 $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario]'");
 ?>
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -27,7 +28,11 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                 <div class="profile">
                     <i id="btn-close" class='bx bx-x'></i>
                     <?php while($row=mysqli_fetch_assoc($user)){?>
-                        <img src='data:image/jpg;base64,<?php echo base64_encode($row["Imagen"])?>'>
+                        <?php if($row["Imagen"]>1) { ?>
+                            <img src="data:image/jpg;base64, <?php echo base64_encode($row["Imagen"])?>">
+                        <?php }else{ ?>
+                            <img src="/gestionla/images/photo.jpg">
+                        <?php } ?>
                         <b><?php echo $row["Nombre"]?></b>
                         <p><u><?php echo $row["Funcion"]?></u></p>
                     <?php } ?>
@@ -39,7 +44,7 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                     </a>
                     <b>PROCESOS</b>
                     <ul>
-                        <a href="#">
+                        <a href="./procedimientos.php">
                             <li><i class='bx bx-archive'></i><p>Procedimientos</p></li>
                         </a>
                         <a href="#">
@@ -62,11 +67,14 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                     </ul>
                 </div>
                 <hr>
-                <a id="close" href="/gestionla/model/close.php"><i class='bx bx-log-out'></i><p>Salir</p></a>
+                <a id="close" href="/gestionla/model/close.php">
+                    <i class='bx bx-log-out'></i>
+                    <p>Salir</p>
+                </a>
             </div>
         </section>
         <!--CONTENT-->
-        <section class="content">
+        <section class="main">
             <div class="navbar">
                 <div class="title">
                     <i id="btn-menu" class='bx bx-menu'></i>
@@ -74,7 +82,7 @@ $user=mysqli_query($conx,"SELECT * FROM usuarios WHERE Nombre='$_SESSION[usuario
                 </div>
                 <img src="/gestionla/images/logo.png" alt="LICOAMERICA">
             </div>
-            <div class="data"></div>
+            <div class="content"></div>
         </section>
     </main>
     <script src="/gestionla/js/sidebar.js"></script>
